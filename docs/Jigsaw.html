@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jigsaw Analysis &#8212; Book1</title>
+    <title>Section 2: Implementation of LDA &#8212; Book1</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,7 +51,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="TESTING" href="testing.html" />
+    <link rel="next" title="Section 3: Application of LDA - A Biased Percpective" href="Topic.html" />
+    <link rel="prev" title="Content with notebooks" href="notebooks.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -97,14 +98,14 @@
    Content with notebooks
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="testing.html">
-   TESTING
-  </a>
- </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Jigsaw Analysis
+   Section 2: Implementation of LDA
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Topic.html">
+   Section 3: Application of LDA - A Biased Percpective
   </a>
  </li>
 </ul>
@@ -197,84 +198,52 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Jigsaw Analysis
+   Section 2: Implementation of LDA
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#to-further-understand-the-importance-of-topic-modeling-we-will-be-looking-into-a-public-dataset-i-e-jigsaw-unintended-bias-dataset">
-     To further understand the importance of topic modeling, we will be looking into a public dataset, i.e. Jigsaw Unintended Bias dataset.
+    <a class="reference internal nav-link" href="#we-will-be-reading-the-data-into-a-dataframe-for-easy-analysis">
+     We will be reading the data into a dataframe for easy analysis.
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#describe-dataset">
-     &lt; Describe Dataset&gt;
+    <a class="reference internal nav-link" href="#lets-try-removing-unnecessary-words-and-cleaning-the-statements-for-analysis-of-topics">
+     Lets try removing unnecessary words and cleaning the statements for analysis of topics.
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#we-have-filtered-all-the-comments-that-have-been-provided-a-value-for-the-parameters-of-intellectual-or-learning-disability-psychiatric-or-mental-illness-physical-disability-other-disability-we-now-have-18665-statements-in-this-corpus">
-     We have filtered all the comments that have been provided a value for the parameters of ‘Intellectual or Learning Disability’. ‘Psychiatric or Mental Illness’. ‘Physical Disability’ &amp; ‘Other Disability’. We now have 18665 statements in this corpus.
+    <a class="reference internal nav-link" href="#we-will-be-converting-the-statements-to-a-vector-format-for-the-machine-to-understand">
+     We will be converting the statements to a vector format for the machine to understand.
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-dataset-therefore-contains-statements-pertained-to-these-parameters-we-can-assume-that-these-statements-might-most-likely-take-about-people-with-disability-but-with-the-help-of-topic-modeling-we-can-confirm-this">
-     The dataset therefore contains statements pertained to these parameters. We can assume that these statements might most likely take about people with disability, but with the help of topic modeling, we can confirm this.
+    <a class="reference internal nav-link" href="#for-the-current-analysis-lets-define-the-machine-to-extract-10-unique-topics-from-the-dataset-you-can-play-around-with-the-number-of-topics">
+     For the current analysis, lets define the machine to extract 10 unique topics from the dataset (You can play around with the number of topics.).
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#we-will-import-the-necessary-libraries-here">
-       We will import the necessary libraries here
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#we-will-be-reading-the-data-into-a-dataframe-for-easy-analysis">
-       We will be reading the data into a dataframe for easy analysis
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#this-is-how-the-data-looks-like">
-       This is how the data looks like:
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#lets-try-removing-unnecessary-words-and-cleaning-the-statements-for-analysis-of-topics">
-       Lets try removing unnecessary words and cleaning the statements for analysis of topics.
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#we-will-be-converting-the-statements-to-a-vector-format-for-the-machine-to-understand">
-       We will be converting the statements to a vector format for the machine to understand.
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#for-the-current-analysis-lets-define-the-machine-to-extract-10-unique-topics-from-the-dataset-you-can-play-around-with-the-number-of-topics-if-you-wish-to">
-       For the current analysis, lets define the machine to extract 10 unique topics from the dataset (You can play around with the number of topics if you wish to).
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#the-below-topics-show-the-most-significant-word-in-each-topic-with-firther-analysis-we-can-understand-the-behaviour-of-the-dataset-and-type-of-conversations-that-occur-in-them">
-       The below topics show the most significant word in each topic. With firther analysis, we can understand the behaviour of the dataset and type of conversations that occur in them.
-      </a>
-     </li>
-    </ul>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#analysis-of-the-topic-modeling">
-     Analysis of the Topic Modeling
+    <a class="reference internal nav-link" href="#here-the-machine-performs-the-topic-modelling-analysis-this-might-take-a-little-while">
+     Here, the machine performs the topic modelling analysis. (This might take a little while)
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#from-the-above-result-we-see-that-the-topics-mostly-constitute-either-political-or-religious-words-this-shows-that-even-though-the-dataset-is-intended-to-analyse-conversations-that-revolve-around-people-with-disabilites-we-see-that-this-is-not-the-case">
-       From the above result, we see that the topics mostly constitute either political or religious words. This shows that even though the dataset is intended to analyse conversations that revolve around people with disabilites, we see that this is not the case.
-      </a>
-     </li>
-    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#each-column-in-the-table-show-the-most-significant-words-in-each-topic-with-further-analysis-we-can-understand-the-behaviour-of-the-dataset-and-type-of-conversations-that-occur-in-them">
+     Each column in the table show the most significant words in each topic. With further analysis, we can understand the behaviour of the dataset and type of conversations that occur in them.
+    </a>
    </li>
   </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#explain-more-of-the-analysis">
-   &lt; Explain more of the analysis &gt;
+  <a class="reference internal nav-link" href="#now-to-the-analysis">
+   Now to the analysis!
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#click-insert-page-name">
+     Click &lt;insert Page name&gt;
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -287,21 +256,18 @@
         
               <div>
                 
-  <div class="section" id="jigsaw-analysis">
-<h1>Jigsaw Analysis<a class="headerlink" href="#jigsaw-analysis" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="to-further-understand-the-importance-of-topic-modeling-we-will-be-looking-into-a-public-dataset-i-e-jigsaw-unintended-bias-dataset">
-<h2>To further understand the importance of topic modeling, we will be looking into a public dataset, i.e. Jigsaw Unintended Bias dataset.<a class="headerlink" href="#to-further-understand-the-importance-of-topic-modeling-we-will-be-looking-into-a-public-dataset-i-e-jigsaw-unintended-bias-dataset" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="section-2-implementation-of-lda">
+<h1>Section 2: Implementation of LDA<a class="headerlink" href="#section-2-implementation-of-lda" title="Permalink to this headline">¶</a></h1>
+<p>To further understand the importance of topic modeling, we will be looking into a public dataset, i.e. the Jigsaw Unintended Bias dataset <a href="#id1"><span class="problematic" id="id2">:cite:`kaggle`</span></a>.</p>
+<p>This dataset consists of ~2m public comments from the Civil Comment <a href="#id3"><span class="problematic" id="id4">:cite:`bogdanoff_2017`</span></a> platform so that researchers could understand and improve civility in online conversations. Civil Comments was a social media platform that uses peer-review submission where commenters rated the civility of other comments before their own was, in turn, rated by others.</p>
+<p>These comments are then annotated by human raters for various toxic conversational attributes. Additional labels related to sociodemographic identifiers were mentioned to help a machine understand bias better, based on context analysis. But we will see the utility of this dataset and the presence of potential bias in these conversations related to people with physical, mental and learning disabilites.</p>
+<p>We have filtered all the comments that have been provided a value for the parameters of ‘Intellectual or Learning Disability’. ‘Psychiatric or Mental Illness’. ‘Physical Disability’ &amp; ‘Other Disability’. We now have 18665 statements in this corpus.
+The dataset therefore contains statements pertained to these parameters. We can assume that these statements might most likely take about people with disability, but with the help of topic modeling, we can confirm this.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Some comments in the dataset may have explicit language.</p>
 </div>
-<div class="section" id="describe-dataset">
-<h2>&lt; Describe Dataset&gt;<a class="headerlink" href="#describe-dataset" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="we-have-filtered-all-the-comments-that-have-been-provided-a-value-for-the-parameters-of-intellectual-or-learning-disability-psychiatric-or-mental-illness-physical-disability-other-disability-we-now-have-18665-statements-in-this-corpus">
-<h2>We have filtered all the comments that have been provided a value for the parameters of ‘Intellectual or Learning Disability’. ‘Psychiatric or Mental Illness’. ‘Physical Disability’ &amp; ‘Other Disability’. We now have 18665 statements in this corpus.<a class="headerlink" href="#we-have-filtered-all-the-comments-that-have-been-provided-a-value-for-the-parameters-of-intellectual-or-learning-disability-psychiatric-or-mental-illness-physical-disability-other-disability-we-now-have-18665-statements-in-this-corpus" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="the-dataset-therefore-contains-statements-pertained-to-these-parameters-we-can-assume-that-these-statements-might-most-likely-take-about-people-with-disability-but-with-the-help-of-topic-modeling-we-can-confirm-this">
-<h2>The dataset therefore contains statements pertained to these parameters. We can assume that these statements might most likely take about people with disability, but with the help of topic modeling, we can confirm this.<a class="headerlink" href="#the-dataset-therefore-contains-statements-pertained-to-these-parameters-we-can-assume-that-these-statements-might-most-likely-take-about-people-with-disability-but-with-the-help-of-topic-modeling-we-can-confirm-this" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="we-will-import-the-necessary-libraries-here">
-<h3>We will import the necessary libraries here<a class="headerlink" href="#we-will-import-the-necessary-libraries-here" title="Permalink to this headline">¶</a></h3>
+<p>We will import the necessary libraries here</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -331,21 +297,20 @@
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_23424</span><span class="o">/</span><span class="mf">437509047.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">re</span>
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_23652</span><span class="o">/</span><span class="mf">3137754317.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span> 
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
 
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;matplotlib&#39;
 </pre></div>
 </div>
 </div>
 </div>
-</div>
 <div class="section" id="we-will-be-reading-the-data-into-a-dataframe-for-easy-analysis">
-<h3>We will be reading the data into a dataframe for easy analysis<a class="headerlink" href="#we-will-be-reading-the-data-into-a-dataframe-for-easy-analysis" title="Permalink to this headline">¶</a></h3>
+<h2>We will be reading the data into a dataframe for easy analysis.<a class="headerlink" href="#we-will-be-reading-the-data-into-a-dataframe-for-easy-analysis" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;PWD.csv&#39;</span><span class="p">)</span>
@@ -353,12 +318,10 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="this-is-how-the-data-looks-like">
-<h3>This is how the data looks like:<a class="headerlink" href="#this-is-how-the-data-looks-like" title="Permalink to this headline">¶</a></h3>
+<p>This is how the data looks like:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -422,10 +385,10 @@
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.250000</td>
+      <td>0.25</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.00000</td>
+      <td>0.0</td>
       <td>4</td>
       <td>58</td>
     </tr>
@@ -446,10 +409,10 @@
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.000000</td>
+      <td>0.00</td>
       <td>0.0</td>
       <td>1.0</td>
-      <td>0.00000</td>
+      <td>0.0</td>
       <td>4</td>
       <td>10</td>
     </tr>
@@ -470,10 +433,10 @@
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.000000</td>
+      <td>0.00</td>
       <td>0.0</td>
       <td>1.0</td>
-      <td>0.00000</td>
+      <td>0.0</td>
       <td>4</td>
       <td>62</td>
     </tr>
@@ -494,10 +457,10 @@
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.750000</td>
+      <td>0.75</td>
       <td>0.0</td>
       <td>1.0</td>
-      <td>0.00000</td>
+      <td>0.0</td>
       <td>4</td>
       <td>68</td>
     </tr>
@@ -518,165 +481,38 @@
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.000000</td>
+      <td>0.00</td>
       <td>0.0</td>
       <td>1.0</td>
-      <td>0.00000</td>
+      <td>0.0</td>
       <td>4</td>
       <td>70</td>
     </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>18660</th>
-      <td>1999482</td>
-      <td>6119664</td>
-      <td>A similar incident happened sometime ago at th...</td>
-      <td>train</td>
-      <td>2017-10-11 00:22:11.014963+00</td>
-      <td>55</td>
-      <td>NaN</td>
-      <td>387475</td>
-      <td>approved</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.000000</td>
-      <td>0.1</td>
-      <td>0.5</td>
-      <td>0.00000</td>
-      <td>10</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <th>18661</th>
-      <td>1999507</td>
-      <td>5533327</td>
-      <td>"Match found that 91 percent of liberals say t...</td>
-      <td>train</td>
-      <td>2017-07-05 17:58:11.764575+00</td>
-      <td>102</td>
-      <td>NaN</td>
-      <td>351854</td>
-      <td>approved</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.000000</td>
-      <td>0.0</td>
-      <td>0.7</td>
-      <td>0.00000</td>
-      <td>10</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <th>18662</th>
-      <td>1999508</td>
-      <td>784202</td>
-      <td>Charles has a serious victim mentality disorder.</td>
-      <td>train</td>
-      <td>2017-01-03 18:08:33.913588+00</td>
-      <td>13</td>
-      <td>776014.0</td>
-      <td>159306</td>
-      <td>approved</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.000000</td>
-      <td>0.0</td>
-      <td>0.5</td>
-      <td>0.00000</td>
-      <td>10</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <th>18663</th>
-      <td>1999514</td>
-      <td>5165492</td>
-      <td>I just don't find her a very good representati...</td>
-      <td>train</td>
-      <td>2017-04-22 18:42:02.442987+00</td>
-      <td>54</td>
-      <td>NaN</td>
-      <td>328877</td>
-      <td>approved</td>
-      <td>1</td>
-      <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.003717</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.00000</td>
-      <td>269</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <th>18664</th>
-      <td>1999515</td>
-      <td>4984105</td>
-      <td>You know the Trump fanatics are trolling the G...</td>
-      <td>train</td>
-      <td>2017-03-10 00:55:35.369198+00</td>
-      <td>54</td>
-      <td>807615.0</td>
-      <td>156960</td>
-      <td>approved</td>
-      <td>1</td>
-      <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.000000</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.00064</td>
-      <td>1562</td>
-      <td>10</td>
-    </tr>
   </tbody>
 </table>
-<p>18665 rows × 47 columns</p>
+<p>5 rows × 47 columns</p>
 </div></div></div>
+</div>
+<p>Below are just a few of the comments in this group. You can view more comments by changing the parameter in the ‘head’ function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_colwidth&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">comment_text</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0                                                                                          No sympathy for these two knuckleheads.
+1                                        Wow!\nYour progressive psychosis has become extreme!\nPlease seek immediate medical help.
+2    Or.... maybe there IS chaos because the &quot;president&quot; is a mentally ill, in-over-his-head idiot who couldn&#39;t lead cats to tuna.
+Name: comment_text, dtype: object
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="lets-try-removing-unnecessary-words-and-cleaning-the-statements-for-analysis-of-topics">
-<h3>Lets try removing unnecessary words and cleaning the statements for analysis of topics.<a class="headerlink" href="#lets-try-removing-unnecessary-words-and-cleaning-the-statements-for-analysis-of-topics" title="Permalink to this headline">¶</a></h3>
+<h2>Lets try removing unnecessary words and cleaning the statements for analysis of topics.<a class="headerlink" href="#lets-try-removing-unnecessary-words-and-cleaning-the-statements-for-analysis-of-topics" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;stopwords&#39;</span><span class="p">)</span>
@@ -716,13 +552,9 @@
                                             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tweet_token_list</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
     <span class="n">tweet</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tweet_token_list</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">tweet</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">[]</span>
+
+
+<span class="n">t</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;clean_tweet&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">comment_text</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">clean_tweet</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -730,7 +562,7 @@
 </div>
 </div>
 <div class="section" id="we-will-be-converting-the-statements-to-a-vector-format-for-the-machine-to-understand">
-<h3>We will be converting the statements to a vector format for the machine to understand.<a class="headerlink" href="#we-will-be-converting-the-statements-to-a-vector-format-for-the-machine-to-understand" title="Permalink to this headline">¶</a></h3>
+<h2>We will be converting the statements to a vector format for the machine to understand.<a class="headerlink" href="#we-will-be-converting-the-statements-to-a-vector-format-for-the-machine-to-understand" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
@@ -748,8 +580,8 @@
 </div>
 </div>
 </div>
-<div class="section" id="for-the-current-analysis-lets-define-the-machine-to-extract-10-unique-topics-from-the-dataset-you-can-play-around-with-the-number-of-topics-if-you-wish-to">
-<h3>For the current analysis, lets define the machine to extract 10 unique topics from the dataset (You can play around with the number of topics if you wish to).<a class="headerlink" href="#for-the-current-analysis-lets-define-the-machine-to-extract-10-unique-topics-from-the-dataset-you-can-play-around-with-the-number-of-topics-if-you-wish-to" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="for-the-current-analysis-lets-define-the-machine-to-extract-10-unique-topics-from-the-dataset-you-can-play-around-with-the-number-of-topics">
+<h2>For the current analysis, lets define the machine to extract 10 unique topics from the dataset (You can play around with the number of topics.).<a class="headerlink" href="#for-the-current-analysis-lets-define-the-machine-to-extract-10-unique-topics-from-the-dataset-you-can-play-around-with-the-number-of-topics" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">number_of_topics</span> <span class="o">=</span> <span class="mi">10</span>
@@ -759,10 +591,12 @@
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="here-the-machine-performs-the-topic-modelling-analysis-this-might-take-a-little-while">
+<h2>Here, the machine performs the topic modelling analysis. (This might take a little while)<a class="headerlink" href="#here-the-machine-performs-the-topic-modelling-analysis-this-might-take-a-little-while" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Here, the machine performs the topic modelling analysis. (This might take a little while) </span>
-<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">tf</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">tf</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -788,8 +622,9 @@
 </div>
 </div>
 </div>
-<div class="section" id="the-below-topics-show-the-most-significant-word-in-each-topic-with-firther-analysis-we-can-understand-the-behaviour-of-the-dataset-and-type-of-conversations-that-occur-in-them">
-<h3>The below topics show the most significant word in each topic. With firther analysis, we can understand the behaviour of the dataset and type of conversations that occur in them.<a class="headerlink" href="#the-below-topics-show-the-most-significant-word-in-each-topic-with-firther-analysis-we-can-understand-the-behaviour-of-the-dataset-and-type-of-conversations-that-occur-in-them" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="each-column-in-the-table-show-the-most-significant-words-in-each-topic-with-further-analysis-we-can-understand-the-behaviour-of-the-dataset-and-type-of-conversations-that-occur-in-them">
+<h2>Each column in the table show the most significant words in each topic. With further analysis, we can understand the behaviour of the dataset and type of conversations that occur in them.<a class="headerlink" href="#each-column-in-the-table-show-the-most-significant-words-in-each-topic-with-further-analysis-we-can-understand-the-behaviour-of-the-dataset-and-type-of-conversations-that-occur-in-them" title="Permalink to this headline">¶</a></h2>
+<p>Try changing the no_top_words variable to show more or less words in each topic.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">no_top_words</span> <span class="o">=</span> <span class="mi">15</span>
@@ -1188,17 +1023,14 @@
 </table>
 </div></div></div>
 </div>
+<p>We can go through the topics achieved to understand the most common conversations that occur in this dataset. We will be looking into this content in detail in the following section.</p>
 </div>
 </div>
-<div class="section" id="analysis-of-the-topic-modeling">
-<h2>Analysis of the Topic Modeling<a class="headerlink" href="#analysis-of-the-topic-modeling" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="from-the-above-result-we-see-that-the-topics-mostly-constitute-either-political-or-religious-words-this-shows-that-even-though-the-dataset-is-intended-to-analyse-conversations-that-revolve-around-people-with-disabilites-we-see-that-this-is-not-the-case">
-<h3>From the above result, we see that the topics mostly constitute either political or religious words. This shows that even though the dataset is intended to analyse conversations that revolve around people with disabilites, we see that this is not the case.<a class="headerlink" href="#from-the-above-result-we-see-that-the-topics-mostly-constitute-either-political-or-religious-words-this-shows-that-even-though-the-dataset-is-intended-to-analyse-conversations-that-revolve-around-people-with-disabilites-we-see-that-this-is-not-the-case" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="now-to-the-analysis">
+<h1>Now to the analysis!<a class="headerlink" href="#now-to-the-analysis" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="click-insert-page-name">
+<h2>Click &lt;insert Page name&gt;<a class="headerlink" href="#click-insert-page-name" title="Permalink to this headline">¶</a></h2>
 </div>
-</div>
-</div>
-<div class="section" id="explain-more-of-the-analysis">
-<h1>&lt; Explain more of the analysis &gt;<a class="headerlink" href="#explain-more-of-the-analysis" title="Permalink to this headline">¶</a></h1>
 </div>
 
     <script type="text/x-thebe-config">
@@ -1226,7 +1058,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="testing.html" title="previous page">TESTING</a>
+    <a class='left-prev' id="prev-link" href="notebooks.html" title="previous page">Content with notebooks</a>
+    <a class='right-next' id="next-link" href="Topic.html" title="next page">Section 3: Application of LDA - A Biased Percpective</a>
 
         </div>
         
